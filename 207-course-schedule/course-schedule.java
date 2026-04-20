@@ -1,10 +1,6 @@
 class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        @SuppressWarnings("unchecked")
-        ArrayList<Integer>[] graph = new ArrayList[numCourses];
-        for(int i=0;i<numCourses;i++){
-            graph[i]=new ArrayList<>();
-        }
+
+    public boolean bfsTopoLogicalSort(ArrayList<Integer>[] graph,int numCourses ,int[][] prerequisites){
         int[] indegree = new int[numCourses];
         for(int i=0;i<prerequisites.length;i++){
             graph[prerequisites[i][1]].add(prerequisites[i][0]);
@@ -33,6 +29,15 @@ class Solution {
         }
 
         return numCourses==0;
+    }
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        @SuppressWarnings("unchecked")
+        ArrayList<Integer>[] graph = new ArrayList[numCourses];
+        for(int i=0;i<numCourses;i++){
+            graph[i]=new ArrayList<>();
+        }
+        return bfsTopoLogicalSort(graph,numCourses,prerequisites);
 
     }
 }
