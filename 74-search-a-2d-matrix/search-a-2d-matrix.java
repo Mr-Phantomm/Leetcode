@@ -4,8 +4,8 @@ class Solution {
         int end = (matrix.length*matrix[0].length)-1;
         while(start<=end){
             int mid = (end-start)/2+start;
-            System.out.println(start+" "+end);
-            System.out.println(mid/matrix.length+" "+mid%matrix.length);
+            // System.out.println(start+" "+end);
+            // System.out.println(mid/matrix.length+" "+mid%matrix.length);
             int curr = matrix[mid/matrix[0].length][mid%matrix[0].length];
             if(target==curr)return true;
             else if(curr<target){
