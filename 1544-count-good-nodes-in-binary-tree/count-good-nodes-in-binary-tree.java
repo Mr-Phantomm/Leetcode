@@ -14,17 +14,12 @@
  * }
  */
 class Solution {
-
-    public int goodNode(TreeNode root,int MAX){
+    public int goodNodes(TreeNode root,int greatest){
         if(root==null)return 0;
-        int left = goodNode(root.left,Math.max(MAX,root.val));
-        int right = goodNode(root.right,Math.max(MAX,root.val));
-        int currentNode = root.val>=MAX?1:0;
-        return left+right+currentNode;
+        if(root.val>=greatest)System.out.println(root.val);
+        return goodNodes(root.left,Math.max(greatest,root.val))+goodNodes(root.right,Math.max(greatest,root.val))+(root.val>=greatest?1:0);
     }
-
-    public int goodNodes(TreeNode root) {   
-        return goodNode(root,Integer.MIN_VALUE);
-        
+    public int goodNodes(TreeNode root) {
+        return goodNodes(root,Integer.MIN_VALUE);
     }
 }
