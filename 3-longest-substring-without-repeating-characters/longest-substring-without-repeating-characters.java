@@ -7,7 +7,7 @@ class Solution {
         while(right<s.length()){
 
             char ch = s.charAt(right);
-            System.out.println(left+" "+right);
+            // System.out.println(left+" "+right);
             if(!map.containsKey(ch)){
             }else{
                 if(map.get(ch)>=left){
