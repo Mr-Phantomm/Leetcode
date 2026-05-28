@@ -17,8 +17,8 @@ class Solution {
                 if(size==0){
                     if(ans=="")ans=s.substring(left,right+1);
                     while(size==0){
-                        String str = s.substring(left,right+1);
-                        ans = ans.length()<str.length()?ans:str;
+                        
+                        ans = ans.length()<right-left+1?ans:s.substring(left,right+1);
                         if(map.containsKey(s.charAt(left))){
                             map.put(s.charAt(left),map.get(s.charAt(left))+1);
                             if(map.get(s.charAt(left))>0)size++;    
