@@ -16,7 +16,7 @@ class Solution {
                     if(anagramSize==0)list.add(left);
 
             }
-            System.out.println(left+" "+right+" "+map);
+            // System.out.println(left+" "+right+" "+map);
 
             if(windowLen==p.length()){
                 if(map.containsKey(s.charAt(left))){
