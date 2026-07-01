@@ -1,21 +1,27 @@
 class Solution {
 
-    public void backTrack(int i,int[] candidates,int target,List<Integer> list , Set<List<Integer>> ans){
-        if(i == candidates.length||target<0)return;
-        if(target == 0){
-            ans.add(new ArrayList<>(list));
+    public void backTrack(int[] candidates,int target,List<List<Integer>> list,List<Integer> curr,int i){
+        if(target==0){
+            list.add(new ArrayList<>(curr));
             return;
         }
-        for(int j=i;j<candidates.length;j++){
-            list.add(candidates[j]);
-            backTrack(j,candidates,target-candidates[j],list,ans);
-            list.remove(list.size()-1);
+        
+        if(i>=candidates.length||target<0){
+            return;
         }
+
+        if(candidates[i]<=target){
+            curr.add(candidates[i]);
+            backTrack(candidates,target-candidates[i],list,curr,i);
+            curr.remove(curr.size()-1);
+        }               
+        backTrack(candidates,target,list,curr,i+1);
+
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        Set<List<Integer>> ans = new HashSet<>();
-        backTrack(0,candidates,target,new ArrayList<>(),ans);
-        return new ArrayList<>(ans);
+        List<List<Integer>> list = new ArrayList<>();
+        backTrack(candidates,target,list,new ArrayList<>(),0);
+        return list;
     }
 }
