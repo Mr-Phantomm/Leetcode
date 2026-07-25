@@ -7,11 +7,14 @@ class Solution {
         return hours;
     }
     public int minEatingSpeed(int[] piles, int h) {
-        Arrays.sort(piles);
-        if(h==piles.length)return piles[piles.length-1];
+        int max = Integer.MIN_VALUE;
+        for(int i=0;i<piles.length;i++){
+            max = Math.max(piles[i],max);
+        }
+        if(h==piles.length)return max;
         int left = 1;
-        int right = piles[piles.length-1];
-        int speed = piles[piles.length-1];
+        int right = max;
+        int speed = max;
         while(left<=right){
             int mid = (right-left)/2+left;
             long timeForMid = isValid(piles,mid);
